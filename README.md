@@ -15,6 +15,14 @@ The React Compiler is currently not compatible with SWC. See [this issue](https:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-The code
-<img width="1918" height="1126" alt="image" src="https://github.com/user-attachments/assets/05c28f83-b70c-4426-820a-8f4b9863e7ae" />
-<img width="1817" height="738" alt="image" src="https://github.com/user-attachments/assets/0e7509d3-0881-4275-9e14-cff7da05a874" />
+The website Images
+
+<img width="1895" height="1066" alt="image" src="https://github.com/user-attachments/assets/f042a786-7205-413e-85fa-50a7094a55a1" />
+<img width="1851" height="681" alt="image" src="https://github.com/user-attachments/assets/5a61462a-fefd-45e6-8d88-0358b49d631b" />
+<img width="1847" height="1077" alt="image" src="https://github.com/user-attachments/assets/967eaa1b-837a-437b-86f2-65f2917c6b54" />
+<img width="1643" height="643" alt="image" src="https://github.com/user-attachments/assets/e1fdaefb-a206-4e84-8702-3518f0251576" />
+<img width="1891" height="1067" alt="image" src="https://github.com/user-attachments/assets/8792be08-1786-4b7f-a843-77e7ef2e8fd7" />
+
+
+
+
