@@ -17,3 +17,4 @@ If you are developing a production application, we recommend using TypeScript wi
 
 The code
 <img width="1918" height="1126" alt="image" src="https://github.com/user-attachments/assets/05c28f83-b70c-4426-820a-8f4b9863e7ae" />
+<img width="1817" height="738" alt="image" src="https://github.com/user-attachments/assets/0e7509d3-0881-4275-9e14-cff7da05a874" />
