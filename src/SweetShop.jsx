@@ -18,8 +18,7 @@ const firebaseConfig = {
   messagingSenderId: "your_sender_id",
   appId: "id",
   measurementId: "mid"
-};
-// ------------------------------------
+};-----------------------------------
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -155,32 +154,52 @@ const SweetShop = () => {
   };
 
   // --- RENDER HELPERS ---
-  const SweetCard = ({ s }) => (
-    <div className="bg-white p-4 rounded shadow border border-pink-100 flex flex-col justify-between">
-      <div>
-        <div className="flex justify-between items-start">
-          <h3 className="font-bold text-lg text-pink-700">{s.name}</h3>
-          <span className="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">{s.category}</span>
+const SweetCard = ({ s }) => (
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 
+                    transform transition duration-300 hover:scale-[1.03] hover:shadow-xl hover:border-violet-200">
+      
+      {/* Header section with Name and Tag */}
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="font-extrabold text-xl text-gray-800">{s.name}</h3>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mt-1">{s.category}</p>
         </div>
-        <p className="text-2xl font-bold text-gray-800 my-2">${s.price}</p>
-        <p className={s.quantity === 0 ? "text-red-500 font-bold" : "text-gray-600"}>
-          Stock: {s.quantity}
-        </p>
+        <span className="bg-violet-100 text-violet-700 text-xl px-2 py-1 rounded-lg">
+          {s.category === 'Chocolate' ? '🍫' : s.category === 'Lollipop' ? '🍭' : '🍬'}
+        </span>
+      </div>
+
+      {/* Price and Stock */}
+      <div className="flex items-baseline gap-2 mb-6">
+        <span className="text-3xl font-black text-gray-900">${s.price}</span>
+        <span className={`text-sm font-semibold ${s.quantity < 5 ? 'text-red-500' : 'text-emerald-600'}`}>
+          {s.quantity} in stock
+        </span>
       </div>
       
-      <div className="mt-4 space-y-2">
+      {/* Action Buttons with Animations */}
+      <div className="space-y-3">
         {userRole === 'admin' ? (
           <div className="flex gap-2">
-            <button onClick={() => { setEditingId(s.id); setNewSweet(s); setView('admin'); }} className="flex-1 bg-blue-100 text-blue-700 py-1 rounded text-sm font-bold">Edit</button>
-            <button onClick={() => deleteSweet(s.id)} className="flex-1 bg-red-100 text-red-700 py-1 rounded text-sm font-bold">Delete</button>
+            <button onClick={() => { setEditingId(s.id); setNewSweet(s); setView('admin'); }} 
+                    className="flex-1 py-2 rounded-lg font-bold text-sm bg-gray-100 text-gray-600 hover:bg-violet-100 hover:text-violet-700 transition-colors">
+              Edit
+            </button>
+            <button onClick={() => deleteSweet(s.id)} 
+                    className="flex-1 py-2 rounded-lg font-bold text-sm bg-red-50 text-red-600 hover:bg-red-100 transition-colors">
+              Delete
+            </button>
           </div>
         ) : (
           <button 
             onClick={() => purchase(s.id, s.quantity)} 
             disabled={s.quantity === 0 || userRole === 'guest'}
-            className={`w-full py-2 rounded text-white font-bold ${s.quantity === 0 || userRole === 'guest' ? 'bg-gray-400' : 'bg-green-500 hover:bg-green-600'}`}
+            className={`w-full py-3 rounded-xl font-bold text-white shadow-lg transition-all active:scale-95
+              ${s.quantity === 0 || userRole === 'guest' 
+                ? 'bg-gray-300 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 hover:shadow-violet-500/50'}`}
           >
-            {userRole === 'guest' ? 'Login to Buy' : s.quantity === 0 ? 'Sold Out' : 'Buy Now'}
+            {userRole === 'guest' ? '🔒 Login to Buy' : s.quantity === 0 ? '❌ Sold Out' : '🛒 Purchase'}
           </button>
         )}
       </div>
@@ -188,17 +207,17 @@ const SweetShop = () => {
   );
 
   return (
-    <div className="min-h-screen bg-pink-50 font-sans text-gray-800 p-4">
+    <div className="min-h-screen bg-violet-50 font-sans text-gray-800 p-4">
       {/* Header */}
       <header className="max-w-5xl mx-auto flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow">
-        <h1 className="text-2xl font-black text-pink-600 cursor-pointer" onClick={() => setView('shop')}>🍬 SweetShop</h1>
+        <h1 className="text-2xl font-black text-violet-600 cursor-pointer" onClick={() => setView('shop')}>🍬 SweetShop</h1>
         <div className="flex items-center gap-4">
           <span className="text-xs font-bold bg-gray-100 px-2 py-1 rounded uppercase tracking-wider">Role: {userRole}</span>
-          {userRole === 'admin' && <button onClick={() => setView('admin')} className="text-sm font-bold text-pink-600 hover:underline">Admin Panel</button>}
+          {userRole === 'admin' && <button onClick={() => setView('admin')} className="text-sm font-bold text-violet-600 hover:underline">Admin Panel</button>}
           {user ? (
             <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded text-sm font-bold">Logout</button>
           ) : (
-            <button onClick={() => setView('login')} className="bg-pink-500 text-white px-3 py-1 rounded text-sm font-bold">Login</button>
+            <button onClick={() => setView('login')} className="bg-violet-500 text-white px-3 py-1 rounded text-sm font-bold">Login</button>
           )}
         </div>
       </header>
@@ -222,13 +241,13 @@ const SweetShop = () => {
 
         {(view === 'login' || view === 'register') && (
           <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow text-center">
-            <h2 className="text-2xl font-bold mb-6 text-pink-600">{view === 'login' ? 'Welcome Back' : 'Join the Club'}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-violet-600">{view === 'login' ? 'Welcome Back' : 'Join the Club'}</h2>
             <form onSubmit={view === 'login' ? handleLogin : handleRegister} className="space-y-4">
               <input type="email" placeholder="Email" className="w-full p-2 border rounded" value={email} onChange={e => setEmail(e.target.value)} required />
               <input type="password" placeholder="Password" className="w-full p-2 border rounded" value={password} onChange={e => setPassword(e.target.value)} required />
-              <button className="w-full bg-pink-500 text-white py-2 rounded font-bold hover:bg-pink-600">{view === 'login' ? 'Login' : 'Register'}</button>
+              <button className="w-full bg-violet-500 text-white py-2 rounded font-bold hover:bg-violet-600">{view === 'login' ? 'Login' : 'Register'}</button>
             </form>
-            <p className="mt-4 text-sm text-gray-500 cursor-pointer hover:text-pink-600" onClick={() => setView(view === 'login' ? 'register' : 'login')}>
+            <p className="mt-4 text-sm text-gray-500 cursor-pointer hover:text-violet-600" onClick={() => setView(view === 'login' ? 'register' : 'login')}>
               {view === 'login' ? 'Need an account? Register' : 'Have an account? Login'}
             </p>
           </div>
