@@ -11,13 +11,13 @@ import {
 // --- CONFIGURATION ---
 // ⬇️ PASTE YOUR FIREBASE KEYS HERE ⬇️
 const firebaseConfig = {
-  apiKey: "AIzaSyAoDgOWTJags7GdIUlXGojkljP8ZhcpoeI",
-  authDomain: "sweetshop0511.firebaseapp.com",
-  projectId: "sweetshop0511",
+  apiKey: "your_api_key",
+  authDomain: "your_domain",
+  projectId: "sweetshop",
   storageBucket: "sweetshop0511.firebasestorage.app",
-  messagingSenderId: "440716436318",
-  appId: "1:440716436318:web:5fa5a896b6f898092665cf",
-  measurementId: "G-PMSNW49C28"
+  messagingSenderId: "your_sender_id",
+  appId: "id",
+  measurementId: "mid"
 };
 // ------------------------------------
 
